@@ -3,9 +3,9 @@
   import {
     btnBlue,
     card,
-    ulClass,
-    liClass,
-    liSelectedClass
+    charList,
+    charItem,
+    charSelected
   } from "./styles/Styles.svelte";
   export let name;
 
@@ -40,10 +40,10 @@
 </svelt:head>
 
 <div class="flex flex-order-1 w-50 center">
-  <ul class={ulClass}>
+  <ul class={charList}>
     {#each characters as char}
       <li
-        class={char.name === selectedChar ? liSelectedClass : liClass}
+        class={char.name === selectedChar ? liSelectedClass : charItem}
         on:click={() => handleSelect(char)}>
         <strong>{char.name}</strong>
         (height: {char.height}cm, birth year: {char.birth_year})

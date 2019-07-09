@@ -9,8 +9,8 @@
   export const card = "ba br3 b--black-10 pa2 shadow-4 w-20 tc center mt2 mb2";
 
   // character-list
-  export const ulClass =
+  export const charList =
     "ba b--black-10 list pl0 ml0 center mw5 ba b--light-silver br3";
-  export const liClass = "ph3 pv2 bb b--light-silver pointer";
-  export const liSelectedClass = "ph3 pv2 bb b--light-silver bg-gold pointer";
+  export const charItem = "ph3 pv2 bb b--light-silver pointer";
+  export const charSelected = "ph3 pv2 bb b--light-silver bg-gold pointer";
 </script>
