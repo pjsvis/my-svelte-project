@@ -1,30 +1,34 @@
 <script>
   import { onMount } from "svelte";
+  import {
+    btnBlue,
+    card,
+    ulClass,
+    liClass,
+    liSelectedClass
+  } from "./styles/Styles.svelte";
   export let name;
-  // @see<https://codepen.io/luizbills/pen/VXKJpO>
-  const btnBlue =
-    "button-reset white pv2 ph3 bg-blue hover-bg-dark-blue bn br2";
-    
-  const card = "ba br3 b--black-10 pa2 shadow-4 w-20 tc center mt2 mb2";
-  const ulClass =
-    "ba b--black-10 list pl0 ml0 center mw5 ba b--light-silver br3";
-  const liClass = "ph3 pv2 bb b--light-silver pointer";
 
   const toggle = () => {
     console.log("toggled");
   };
 
+  let selectedChar = "";
   const handleSelect = char => {
     console.log(char);
     name = char.name;
+    selectedChar = char.name;
+    console.log(selectedChar);
   };
 
   // Fetch data from star wars api
   let characters = [];
+
   onMount(async () => {
     const apiResponse = await fetch("https://swapi.co/api/people");
     const swapiPeopleJson = await apiResponse.json();
     characters = swapiPeopleJson.results;
+    handleSelect(characters[0]);
   });
 </script>
 
@@ -35,26 +39,29 @@
 
 </svelt:head>
 
-<div>
-  <div class={card}>
-    <h1 class="light-red">
-      Hello there
-      <br />
-       {name}!
-    </h1>
-
-    <button class={btnBlue} on:click={toggle}>Ok</button>
-  </div>
-  <!-- Add logic to highlight selected -->
-  <!--  { name, height, birth_year } -->
+<div class="flex flex-order-1 w-50 center">
   <ul class={ulClass}>
     {#each characters as char}
-      <li class={liClass} on:click={() => handleSelect(char)}>
+      <li
+        class={char.name === selectedChar ? liSelectedClass : liClass}
+        on:click={() => handleSelect(char)}>
         <strong>{char.name}</strong>
         (height: {char.height}cm, birth year: {char.birth_year})
       </li>
     {:else}
-      <p>Loading...</p>
+      <p class="w-100 pa3">Loading...</p>
     {/each}
   </ul>
+  {#if name.length > 0}
+    <div class={card}>
+      <h1 class="light-red">
+        Hello there
+        <br />
+         {name}!
+      </h1>
+
+      <button class={btnBlue} on:click={toggle}>Ok</button>
+    </div>
+  {/if}
+
 </div>
