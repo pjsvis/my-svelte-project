@@ -4,6 +4,7 @@
   // @see<https://codepen.io/luizbills/pen/VXKJpO>
   const btnBlue =
     "button-reset white pv2 ph3 bg-blue hover-bg-dark-blue bn br2";
+    
   const card = "ba br3 b--black-10 pa2 shadow-4 w-20 tc center mt2 mb2";
   const ulClass =
     "ba b--black-10 list pl0 ml0 center mw5 ba b--light-silver br3";
@@ -13,12 +14,12 @@
     console.log("toggled");
   };
 
-  const handleSelect = userName => {
-    console.log(name);
-    name = userName;
+  const handleSelect = char => {
+    console.log(char);
+    name = char.name;
   };
 
-  // Fetch data from star wares api
+  // Fetch data from star wars api
   let characters = [];
   onMount(async () => {
     const apiResponse = await fetch("https://swapi.co/api/people");
@@ -45,11 +46,12 @@
     <button class={btnBlue} on:click={toggle}>Ok</button>
   </div>
   <!-- Add logic to highlight selected -->
+  <!--  { name, height, birth_year } -->
   <ul class={ulClass}>
-    {#each characters as { name, height, birth_year }}
-      <li class={liClass} on:click={() => handleSelect(name)}>
-        <strong>{name}</strong>
-        (height: {height}cm, birth year: {birth_year})
+    {#each characters as char}
+      <li class={liClass} on:click={() => handleSelect(char)}>
+        <strong>{char.name}</strong>
+        (height: {char.height}cm, birth year: {char.birth_year})
       </li>
     {:else}
       <p>Loading...</p>
