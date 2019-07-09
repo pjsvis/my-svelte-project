@@ -1,0 +1,338 @@
+/*
+ref: https://make-it-nice.dnsimple.com/docs/getting-started/
+*/
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"),
+    url(https://fonts.gstatic.com/s/roboto/v15/zN7GBFwfMP4uA6AR0HCoLQ.ttf)
+      format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url(https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOKCWcynf_cDxXwCLxiixG1c.ttf)
+      format("truetype");
+}
+.awesomplete [hidden] {
+  display: none;
+}
+.awesomplete .visually-hidden {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.awesomplete {
+  display: inline-block;
+  position: relative;
+}
+.awesomplete > input {
+  display: block;
+}
+.awesomplete > ul {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  min-width: 100%;
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  border-radius: 0.3em;
+  margin: 0.2em 0 0;
+  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(to bottom right, #fff, rgba(255, 255, 255, 0.8));
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0.05em 0.2em 0.6em rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+.awesomplete > ul:empty {
+  display: none;
+}
+@supports (transform: scale(0)) {
+  .awesomplete > ul {
+    transition: 0.3s cubic-bezier(0.4, 0.2, 0.5, 1.4);
+    transform-origin: 1.43em -0.43em;
+  }
+  .awesomplete > ul:empty,
+  .awesomplete > ul[hidden] {
+    opacity: 0;
+    transform: scale(0);
+    display: block;
+    transition-timing-function: ease;
+  }
+}
+.dn-btn-default:hover,
+.dn-btn-lg-default:hover,
+.dn-btn-lg-primary:hover,
+.dn-btn-lg:hover,
+.dn-btn-primary:hover,
+.dn-btn:hover,
+.dn-link-danger:hover,
+.dn-link-primary:hover,
+.dn-link:hover {
+  opacity: 0.5;
+}
+.awesomplete > ul:before {
+  content: "";
+  position: absolute;
+  top: -0.43em;
+  left: 1em;
+  width: 0;
+  height: 0;
+  padding: 0.4em;
+  background: #fff;
+  border: inherit;
+  border-right: 0;
+  border-bottom: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.awesomplete > ul > li {
+  position: relative;
+  padding: 0.7em 0.5em;
+  cursor: pointer;
+}
+.awesomplete > ul > li:hover {
+  background: #b8d3e0;
+  color: #000;
+}
+.awesomplete > ul > li[aria-selected="true"] {
+  background: #1a5ec6;
+  color: #fff;
+}
+.awesomplete mark {
+  background: #eaff00;
+}
+.awesomplete li:hover mark {
+  background: #b5d100;
+}
+.awesomplete li[aria-selected="true"] mark {
+  background: #3d6b00;
+  color: inherit;
+}
+.dn-blue {
+  color: #1a5ec6;
+}
+.dn-bg-blue {
+  background-color: #1a5ec6;
+}
+.dn-light-blue {
+  color: #e5eefd;
+}
+.dn-bg-light-blue {
+  background-color: #e5eefd;
+}
+.dn-near-white {
+  color: #fafafa;
+}
+.dn-bg-near-white,
+.dn-body {
+  background-color: #fafafa;
+}
+.dn-body,
+.dn-near-black {
+  color: #111;
+}
+.dn-body,
+.roboto {
+  font-family: Roboto, sans-serif;
+}
+.dn-link,
+.dn-link-danger,
+.dn-link-primary {
+  text-decoration: none;
+  transition: color 0.15s ease-in;
+}
+.dn-link-primary {
+  color: #1a5ec6;
+}
+.dn-link-danger {
+  color: #ff4136;
+}
+.dn-container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.dn-navbar {
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.dn-navbar-branding,
+.dn-navbar-nav {
+  display: table-cell;
+  vertical-align: middle;
+}
+.dn-navbar-nav {
+  text-align: right;
+}
+.dn-footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-top: 1px solid #eee;
+  background: #fff;
+}
+.dn-btn,
+.dn-btn-default,
+.dn-btn-lg,
+.dn-btn-lg-default,
+.dn-btn-lg-primary,
+.dn-btn-primary {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.dn-btn-lg,
+.dn-btn-lg-default,
+.dn-btn-lg-primary {
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1.25rem;
+}
+.dn-btn-lg-primary,
+.dn-btn-primary {
+  background: #1a5ec6;
+  color: #fff;
+}
+.dn-btn-default,
+.dn-btn-lg-default {
+  background: #999;
+  color: #fff;
+}
+.dn-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.dn-table thead,
+.dn-table tr:nth-child(even) {
+  background: #eee;
+}
+.dn-table th {
+  text-align: left;
+}
+.dn-table td,
+.dn-table th {
+  padding: 1rem;
+}
+.dn-record-A,
+.dn-record-AAAA,
+.dn-record-ALIAS,
+.dn-record-CNAME,
+.dn-record-NS,
+.dn-record-SOA,
+.dn-record-TXT,
+.dn-record-URL,
+.dn-record-type {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+.dn-record-ALIAS {
+  background: #ffb700;
+  color: #000;
+}
+.dn-record-A,
+.dn-record-AAAA {
+  background: #ff4136;
+  color: #fff;
+}
+.dn-record-CNAME {
+  background: #19a974;
+  color: #fff;
+}
+.dn-record-TXT {
+  background: #001b44;
+  color: #fff;
+}
+.dn-record-SOA {
+  background: #e5eefd;
+  color: #000;
+}
+.dn-record-NS {
+  background: #a463f2;
+  color: #fff;
+}
+.dn-record-URL {
+  background: #9eebcf;
+  color: #000;
+}
+.dn-alert,
+.dn-alert-danger,
+.dn-alert-info {
+  display: table;
+  padding: 0.5rem 0;
+  margin: 0 0 2rem;
+  border-radius: 4px;
+  width: 100%;
+}
+.dn-alert span,
+.dn-alert-danger span,
+.dn-alert-info span {
+  display: table-cell;
+  vertical-align: middle;
+  width: 93%;
+}
+.dn-alert-danger:before,
+.dn-alert-info:before,
+.dn-alert:before {
+  content: url(https://addon-ui.dnsimple.com/images/info.svg);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 5px 10px 0;
+}
+.dn-connector-icon,
+.dn-connector-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+.dn-alert-info {
+  background: #e5eefd;
+}
+.dn-alert-info:before {
+  content: url(https://addon-ui.dnsimple.com/images/info.svg);
+}
+.dn-alert-danger {
+  background: #ff725c;
+  color: #fff;
+}
+.dn-alert-danger:before {
+  content: url(https://addon-ui.dnsimple.com/images/error.svg);
+}
+.dn-connector-name {
+  padding-left: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+}
+.dn-connector-icon {
+  width: 2rem;
+}
+.dn-card {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+}
+.dn-input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #aaa;
+  border-radius: 0.125rem;
+}
